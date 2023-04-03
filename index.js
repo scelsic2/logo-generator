@@ -1,8 +1,7 @@
 const inquirer = require("inquirer");
 const MaxLengthInputPrompt = require("inquirer-maxlength-input-prompt");
 const fs = require("fs");
-const shapeOptions = require("./lib/Shapes.js");
-const generateUserLogo = require("./lib/generateLogo.js")
+const shapeClasses = require("./lib/Shapes.js");
 
 console.log("Respond to the prompts to generate your logo.")
 
@@ -50,25 +49,44 @@ function init() {
     .then(function(userInput){
         console.log('user input to follow: ' )
         console.log(userInput);
-        let shapeContent = "";
+        let userSelectedShape = null;
 
         if (userInput.shapes === "circle") {
-            //return `<${shapeName} this.cx this.cy this.r ${shapeColor}>`
-            shapeContent = shapeOptions.circleShape.printShape()          
+            userSelectedShape = new shapeClasses.Circle (
+                "<circle ",
+                ` cx="150" `,
+                `cy="100" `,
+                `r="80" `,
+                `${userInput.characters} </text>`,
+                `fill="${userInput.textColor}">`,
+                `fill="${userInput.shapeColor}" />`, 
+            ) 
         }
+        
         else if (userInput.shapes === "square") {
-            //return `<${shapeName} this.x this.y this.width this.height ${shapeColor}>`
-            //shapeContent = shapeOptions.squareShape;
-            shapeContent = shapeOptions.squareShape.printShape()
+            userSelectedShape = new shapeClasses.Square (
+                "<rect",
+                ` x="50" `,
+                ` y="0" `,
+                ` width="200" `,
+                ` height="200"`,
+                `${userInput.characters} </text>`,
+                `fill="${userInput.textColor}">`,
+                `fill="${userInput.shapeColor}" />`,
+            )
         }
 
         else if (userInput.shapes === "triangle") {
-            //`<${shapeName} this.points ${shapeColor}>`
-            shapeContent = shapeOptions.triangleShape.printShape()
+            userSelectedShape = new shapeClasses.Triangle (
+                "<polygon ",
+                ` points="50 200 150 0 250 200"`,
+                `${user.Input.characters} </text>`,
+                `fill="${userInput.textColor}">`,
+                `fill="${userInput.shapeColor}" />`,
+            )
         } 
 
-
-        const logo = generateUserLogo.generateLogo(userInput, shapeContent);
+        const logo = userSelectedShape.render();
         writeToFile("logo.svg", logo, (err) => {
             if (err) {
                 return console.log (err);
@@ -81,6 +99,10 @@ function init() {
 }
 
 init()
+
+module.exports = {
+    logoPrompts
+}
 
 // --------------------SECOND ATTEMPT-------------------
 
