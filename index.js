@@ -80,7 +80,7 @@ function init() {
             userSelectedShape = new shapeClasses.Triangle (
                 "<polygon ",
                 ` points="50 200 150 0 250 200"`,
-                `${user.Input.characters} </text>`,
+                `${userInput.characters} </text>`,
                 `fill="${userInput.textColor}">`,
                 `fill="${userInput.shapeColor}" />`,
             )
