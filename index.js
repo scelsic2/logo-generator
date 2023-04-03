@@ -2,20 +2,7 @@ const inquirer = require("inquirer");
 const MaxLengthInputPrompt = require("inquirer-maxlength-input-prompt");
 const fs = require("fs");
 const shapeOptions = require("./lib/Shapes.js");
-const generateLogo = require("./lib/generateLogo.js")
-// const shapeTypes = require("./lib/Shapes.js")
-
-// https://www.youtube.com/watch?v=Cgner9r9t5Y
-
-// function generateLogo ({characters, textColor, shapeOptions, shapeColor}, shapeContent) {
-//     return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"><
-//         ${shapeContent}
-    
-
-//         <text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">${characters}</text>
-        
-//         /svg>`
-// }
+const generateUserLogo = require("./lib/generateLogo.js")
 
 console.log("Respond to the prompts to generate your logo.")
 
@@ -65,56 +52,59 @@ function init() {
         console.log(userInput);
         let shapeContent = "";
 
-        if (userInput.shapes == "circle") {
+        if (userInput.shapes === "circle") {
             //return `<${shapeName} this.cx this.cy this.r ${shapeColor}>`
-            shapeContent = new shapeOptions.Circle (
-                "circle ",
-                `150`,
-                100,
-                80,
-                userInput.shapeColor
-            )            
+            shapeContent = shapeOptions.circleShape.printShape()          
         }
-
-        else if (userInput.shapes == "square") {
+        else if (userInput.shapes === "square") {
             //return `<${shapeName} this.x this.y this.width this.height ${shapeColor}>`
             //shapeContent = shapeOptions.squareShape;
-            shapeContent = new shapeOptions.Square (
-                "rect",
-                `50`,
-                `0`,
-                200,
-                200,
-                userInput.shapeColor
-            );
+            shapeContent = shapeOptions.squareShape.printShape()
         }
 
-        else if (userInput.shapes == "triangle") {
+        else if (userInput.shapes === "triangle") {
             //`<${shapeName} this.points ${shapeColor}>`
-            shapeContent  = new shapeOptions.Triangle (
-                "polygon ",
-                `0 100 50 0 100 100`
-            )
+            shapeContent = shapeOptions.triangleShape.printShape()
         } 
 
 
-        let logo = generateLogo.generateLogo(userInput, shapeContent);
-        writeToFile("index2.html", logo, (err) => {
+        const logo = generateUserLogo.generateLogo(userInput, shapeContent);
+        writeToFile("index.html", logo, (err) => {
             if (err) {
                 return console.log (err);
             } else {
                 console.log ("Your logo has been generated.")
             }
         })
+
+    })
+}
+
+init()
+
+// --------------------SECOND ATTEMPT-------------------
+
+// const shapeTypes = require("./lib/Shapes.js")
+
+// https://www.youtube.com/watch?v=Cgner9r9t5Y
+
+// function generateLogo ({characters, textColor, shapeOptions, shapeColor}, shapeContent) {
+//     return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"><
+//         ${shapeContent}
+    
+
+//         <text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">${characters}</text>
+        
+//         /svg>`
+// }
+
+
         // try {
         // writeToFile("index.html", generateLogo(userInput, shapeContent));
         // }
         // catch(e) {
         // }
-    })
-}
 
-init()
 
 // --------------------FIRST ATTEMPT--------------------
 // https://www.youtube.com/watch?v=GJYMcLus3v0&t=25s
