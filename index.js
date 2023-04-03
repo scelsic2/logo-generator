@@ -39,7 +39,7 @@ function writeToFile (fileName, data) {
         if (err) {
             return console.log (err);
         } else {
-            console.log ("Your logo has been generated.")
+            console.log ("Generated logo.svg")
         }
     })
 }
@@ -69,11 +69,11 @@ function init() {
 
 
         const logo = generateUserLogo.generateLogo(userInput, shapeContent);
-        writeToFile("index.html", logo, (err) => {
+        writeToFile("logo.svg", logo, (err) => {
             if (err) {
                 return console.log (err);
             } else {
-                console.log ("Your logo has been generated.")
+                console.log ("Generated logo.svg")
             }
         })
 
