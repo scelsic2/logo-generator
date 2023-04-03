@@ -1,0 +1,31 @@
+{
+  "name": "logo-generator",
+  "version": "1.0.0",
+  "description": "A simple logo generator.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scelsic2/logo-generator.git"
+  },
+  "keywords": [
+    "logo",
+    "generator"
+  ],
+  "author": "Cassandra R. Scelsi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scelsic2/logo-generator/issues"
+  },
+  "homepage": "https://github.com/scelsic2/logo-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "inquirer-maxlength-input-prompt": "^1.0.2"
+  }
+}
