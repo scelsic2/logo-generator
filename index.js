@@ -40,7 +40,7 @@ function writeToFile (fileName, data) {
         } else {
             console.log ("Generated logo.svg")
         }
-    })
+    }) 
 }
 
 function init() {
