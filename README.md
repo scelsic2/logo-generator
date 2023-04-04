@@ -42,7 +42,7 @@ A walkthrough video of the Logo Generator can be found [here](https://drive.goog
 - https://www.youtube.com/watch?v=Cgner9r9t5Y
 - https://github.com/Jshigoodies/SVG-Logo-Maker
 - Tutoring 02APR2023
-- Office Hours 02APR2023
+- Office Hours 03APR2023
 
 ## License
 
